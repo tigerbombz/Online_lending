@@ -1,0 +1,64 @@
+
+<%= link_to "Logout", @session, method: :delete, id: @lender.id%>
+
+<h5>Name: <%= @lender.first_name%> <%= @lender.last_name%></h5>
+<h5>Account Balance: <%= @lender.money %></h5>
+<hr>
+<h4>List of people that need of help (borrowers)</h4>
+<table border="1" style="width:100%">
+  <tr>
+    <th>Name</th>
+    <th>Need Money For</th>
+    <th>Reason For Loan</th>
+    <th>Ammount Needed</th>
+    <th>Amount Raised</th>
+    <th>Action</th>
+  </tr>
+
+  <% @borrowers.each do |b| %>
+  <tr>
+    <td><%= b.first_name %> <%= b.last_name%></td>
+    <td><%= b.reason %></td>
+    <td><%= b.description %></td>
+    <td><%= b.amount %></td>
+    <td>Raised #</td>
+    <td>
+      <%= form_for @transaction, :url => {controller: "transactions", :action => "create" } do |f| %>
+
+      <%= hidden_field_tag :borrower_id, b.id %>
+      <select name="amount">
+        <option value="10">10</option>
+        <option value="25">25</option>
+        <option value="50">50</option>
+      </select>
+      <%= submit_tag "Lend" %>
+      <% end %>
+    </td>
+  </tr>
+<% end %>
+</table>
+<hr>
+
+<h4>List of People you lend money to:</h4>
+<% @lent.each do |l| %>
+<%= l.inspect %>
+
+
+<table border="1" style="width:100%">
+  <tr>
+    <th>Name</th>
+    <th>Need Money For</th>
+    <th>Reason For Loan</th>
+    <th>Amount Needed</th>
+    <th>Amount Raised</th>
+    <th>Amount Lent</th>
+  </tr>
+  <tr>
+    <td><%= l.borrower.first_name%> <%=l.borrower.last_name%></td>
+    <td><%= l.borrower.reason %></td>
+    <td><%= l.borrower.description%></td>
+    <td><%= l.borrower.amount %></td>
+    <td></td>
+  </tr>
+<% end %>
+</table>

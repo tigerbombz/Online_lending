@@ -1,0 +1,23 @@
+<h2>Login Lender</h2>
+<% if flash[:error]%>
+  <%= flash[:error] %>
+<% end %>
+<%= form_for @lender, :url => { controller: 'sessions', :action => "create" } do |f| %>
+  <%= f.label 'email' %>
+  <%= f.text_field :email %><br>
+  <%= f.label 'password' %>
+  <%= f.password_field :password %><br>
+  <%= submit_tag 'Log In' %>
+<% end %>
+<hr>
+<h2>Login Borrower</h2>
+<% if flash[:error]%>
+  <%= flash[:error] %>
+<% end %>
+<%= form_for @borrower, :url => { controller: 'sessions', :action => "create_borrower" } do |f| %>
+  <%= f.label 'email' %>
+  <%= f.text_field :email %><br>
+  <%= f.label 'password' %>
+  <%= f.password_field :password %><br>
+  <%= submit_tag 'Log In' %>
+<% end %>

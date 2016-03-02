@@ -1,0 +1,23 @@
+<%= link_to "Logout", @session, method: :delete, id: @borrower.id%>
+<h5>Name: <%=@borrower.first_name %> <%= @borrower.last_name%></h5>
+<h5>Amount Need: <%=@borrower.amount %></h5>
+<h5>Amount Raised: </h5>
+<%= @raised %>
+<hr>
+<h5>List of people who lend you money</h5>
+<% @borrowers.each do |b| %>
+
+<table border="1" style="width:100%">
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Amount Lent</th>
+  </tr>
+  <tr>
+    <td><%= b.lender.first_name %> <%= b.lender.last_name%></td>
+    <td><%= b.lender.email %></td>
+    <td><%= b.amount %></td>
+  </tr>
+</table>
+
+<% end %>

@@ -1,0 +1,45 @@
+
+<h2>Lender</h2>
+<% if flash[:errors] %>
+  <%= flash[:errors] %>
+<% end %>
+
+<%= form_for @lender, :url => { controller: 'lenders', :action => "create" } do |f| %>
+  <%= f.label 'first name' %>
+  <%= f.text_field :first_name %><br>
+  <%= f.label 'last name' %>
+  <%= f.text_field :last_name %><br>
+  <%= f.label 'email' %>
+  <%= f.text_field :email %><br>
+  <%= f.label 'password' %>
+  <%= f.password_field :password %><br>
+  <%= f.label 'money' %>
+  <%= f.password_field :money %><br>
+  <%= submit_tag 'Register' %>
+<% end %>
+<a href="users/new">Already a Member?</a>
+<hr>
+
+<h2>Borrower</h2>
+<% if flash[:error]%>
+  <%= flash[:error] %>
+<% end %>
+
+<%= form_for @borrower, :url => { controller: 'borrowers', :action => "create" } do |f| %>
+  <%= f.label 'first name' %>
+  <%= f.text_field :first_name %><br>
+  <%= f.label 'last name' %>
+  <%= f.text_field :last_name %><br>
+  <%= f.label 'email' %>
+  <%= f.text_field :email %><br>
+  <%= f.label 'password' %>
+  <%= f.password_field :password %><br>
+  <%= f.label 'reason' %>
+  <%= f.text_field :reason %><br>
+  <%= f.label 'description' %>
+  <%= f.text_field :description %><br>
+  <%= f.label 'amount'%>
+  <%= f.text_field :amount %><br>
+  <%= submit_tag 'Register' %>
+<a href="users/new">Already a Member?</a>
+<% end %>
